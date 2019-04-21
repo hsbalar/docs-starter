@@ -1,0 +1,17 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h3 class="h2" (click)="doL()">Element Instances</h3>
+</div>
+<div class="card-columns">
+  <div class="loaders" *ngIf="loading">
+    <div class="loader circle-loader-1"></div>
+  </div>
+  <div class="card point instance" *ngFor="let row of data" (click)="instanceClick(row)">
+    <img [src]="'https://my-staging.cloudelements.io/assets/img/elements/' + row.element.logo + '.svg'" class="card-img-top" alt="..."
+    height="150px;">
+    <div class="card-body">
+      <h5 class="card-title">{{row.element.name}}</h5>
+      <span class="badge badge-secondary" *ngFor="let i of row.tags">{{i}}</span>
+    </div>
+  </div>
+</div>

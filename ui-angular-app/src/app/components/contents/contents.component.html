@@ -1,0 +1,73 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h3 class="h2"><a href="#" (click)="navigateToInstanceList($event)">Instances </a> | {{accountContext?.currentInstance?.element.name}} | Contents</h3>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <!-- <div class="btn-group mr-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-list"></i></button>
+      <button type="button" class="btn btn-sm btn-outline-secondary"><i class="fa fa-th-large"></i></button>
+    </div> -->
+    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="uploadFileClick()">
+      <i class="fa fa-upload"></i>
+      Upload File
+    </button>
+    <input type="file" style="display: none;" (change)="uploadFileChange($event.target.files)" id="upload-file"/>
+  </div>
+</div>
+<div class="progress" *ngIf="fileUpload.uploading">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+    {{fileUpload.uploading ? 'Uploading file...' : 'Uploaded'}}
+  </div>
+</div>
+<br>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" [ngClass]="{'active': el.id == activeBreadcrumbItem.id }"
+      *ngFor="let el of breadcrumbItems; let i = index;">
+      <a href="#" (click)="breadcrumbItemClick($event, el, i)">{{el.name}}</a>
+    </li>
+  </ol>
+</nav>
+
+<div class="loaders" *ngIf="loading">
+  <div class="loader circle-loader-1"></div>
+</div>
+<!-- <div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Header</th>
+        <th>Header</th>
+        <th>Header</th>
+        <th>Header</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1,001</td>
+        <td>Lorem</td>
+        <td>ipsum</td>
+        <td>dolor</td>
+        <td>sit</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+<div class="row">
+  <div class="col-md-3" *ngFor="let row of data">
+    <div class="card mb-3 shadow-sm" height="150">
+      <div class="bd-placeholder-img card-img-top">
+        <img [src]="row.properties.thumbnailLink" width="100%" height="100" alt="" *ngIf="row.properties && row.properties.thumbnailLink">
+        <i class="fa fa-folder-o fa-4x" *ngIf="row.directory"></i>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{row.name}}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="itemClick(row)">{{row.directory ? 'View' : 'Download'}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
