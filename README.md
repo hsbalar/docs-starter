@@ -34,6 +34,7 @@ docs-starter repo contains three applications
 
 
 ### Note that --- To access your documents you need to specify User key & Organization key in following files.
+(Please add any documets related elements i.e box, googledrive, onedrive etc.)
 
 > ui-angular-app/src/reference/api.constants.ts
 ```
