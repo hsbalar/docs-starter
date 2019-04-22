@@ -34,7 +34,7 @@ docs-starter repo contains three applications
 
 
 ### Note that --- To access your documents you need to specify User key & Organization key in following files.
-(Please add any documets related elements i.e box, googledrive, onedrive etc.)
+(Please add any documets related elements i.e box, googledrive, onedrive etc. and need to authenticate it.)
 
 > ui-angular-app/src/reference/api.constants.ts
 ```
@@ -47,8 +47,9 @@ export const User = `Your User key`;
 export const Organization = `Your Organization key`;
 ```
 
-#### 1. Node API is supports only for documents related elements it can be extended for other types.
-#### 2. OAuth2 login and creation of instance of element can be handled from UI app for any elements.
-#### 3. User have login API for console then no need to specify static User & Organization keys.
-#### 4. To connect other elements API Can be extended
-#### 5. Node API for documents has only required params,for optional can be extended further
+#### 1. You will only able to see all the instances that you have authenticated for element.
+#### 2. Node API is supports only for documents related elements it can be extended for other types.
+#### 3. OAuth2 login and creation of instance of element can be handled from UI app for any elements.
+#### 4. User have login API for console then no need to specify static User & Organization keys.
+#### 5. To connect other elements API Can be extended
+#### 6. Node API for documents has only required params,for optional can be extended further
