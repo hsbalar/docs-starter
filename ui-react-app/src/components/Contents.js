@@ -30,10 +30,6 @@ class Contents extends Component {
     }]
   }
 
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     this.getContents();
   }
@@ -68,8 +64,8 @@ class Contents extends Component {
   }
 
   breadcrumbItemClick = (item, index) => {
-    if (item.id == this.state.activeBreadcrumbItem.id) return;
-    if (item.path == '/') {
+    if (item.id === this.state.activeBreadcrumbItem.id) return;
+    if (item.path === '/') {
       this.getContents();
     } else {
       this.getSubContents(item.id);
@@ -113,7 +109,7 @@ class Contents extends Component {
     })
     .then(data => {
       this.setState({ uploading: false });
-      if (this.state.activeBreadcrumbItem.path == '/') {
+      if (this.state.activeBreadcrumbItem.path === '/') {
         this.getContents();
       } else {
         this.getSubContents(this.state.activeBreadcrumbItem.id)
@@ -131,7 +127,7 @@ class Contents extends Component {
     return (
     <div>
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h3 className="h2"><a href="#" onClick={() => this.instanceClick()}>Instances </a> | Contents</h3>
+        <h3 className="h2"><a href="#/" onClick={() => this.instanceClick()}>Instances </a> | Contents</h3>
         <div className="btn-toolbar mb-2 mb-md-0">
           <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => this.uploadFileClick()}>
             <i className="fa fa-upload"></i> Upload File
@@ -150,8 +146,8 @@ class Contents extends Component {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
         { this.state.breadcrumbItems.map((el, i) => 
-          <li key={i} className={`breadcrumb-item ${el.id == this.state.activeBreadcrumbItem.id ? 'active' : ''}`}>
-            <a href="#" onClick={() => this.breadcrumbItemClick(el, i)}>{el.name}</a>
+          <li key={i} className={`breadcrumb-item ${el.id === this.state.activeBreadcrumbItem.id ? 'active' : ''}`}>
+            <a href="#/" onClick={() => this.breadcrumbItemClick(el, i)}>{el.name}</a>
           </li>
         )}
         </ol>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { BaseURL } from '../reference/api.constant';
+import { BaseURL, Organization, User } from '../reference/api.constant';
 import { AccountContext } from '../services/account.context';
 
 @Injectable()
@@ -11,8 +11,8 @@ export class BackendService {
 
   setContentHeaders() {
     let authorization = this.accountContext.currentElement ?
-    `User ${this.accountContext.User}, Organization ${this.accountContext.Organization}, Element ${this.accountContext.currentElement}` : 
-    `User ${this.accountContext.User}, Organization ${this.accountContext.Organization}`;
+    `User ${User}, Organization ${Organization}, Element ${this.accountContext.currentElement}` : 
+    `User ${User}, Organization ${Organization}`;
 
     const contentHeaders = {
       'Accept': 'application/json',

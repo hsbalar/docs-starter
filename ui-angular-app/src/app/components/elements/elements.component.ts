@@ -12,6 +12,10 @@ import { Router } from '@angular/router';
 export class ElementsComponent implements OnInit {
 
   loading: boolean = false;
+  error = {
+    isError: false,
+    message: null
+  }
   data: any;
 
   constructor(
@@ -36,7 +40,14 @@ export class ElementsComponent implements OnInit {
     .subscribe((res: any) => {
       this.data = res.data;
       this.loading = false;
-    }, err => this.loading = false);
+      this.error.isError = false;
+    }, err => {
+      if (err.error.error.message) {
+        this.error.message = err.error.error.message;
+        this.error.isError = true;
+      }
+      this.loading = false
+    });
   }
 
 }

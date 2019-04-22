@@ -2,6 +2,13 @@
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h3 class="h2" (click)="doL()">Element Instances</h3>
 </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error.isError">
+  <strong>Error!</strong>
+  <p>{{error?.message}}</p>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 <div class="card-columns">
   <div class="loaders" *ngIf="loading">
     <div class="loader circle-loader-1"></div>

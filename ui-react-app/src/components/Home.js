@@ -7,6 +7,10 @@ class Home extends Component {
   
   state = {
     data: [],
+    error: {
+      isError: false,
+      message: null
+    },
     loading: false
   }
 
@@ -16,10 +20,10 @@ class Home extends Component {
       headers: { 'Authorization': `User ${User}, Organization ${Organization}` }
     })
     .then(res => {
-      this.setState({ data: res.data.data, loading: false });        
+      this.setState({ data: res.data.data, loading: false,  error: { isError: false } });        
     })
-    .catch(res => {
-      this.setState({ loading: false });
+    .catch(error => {
+      this.setState({ loading: false, error: { isError: true, message: 'Invalid Organization or User secret provided'} });
     })
   }
 
@@ -38,6 +42,15 @@ class Home extends Component {
         className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h3 className="h2">Element Instances</h3>
       </div>
+      { this.state.error.isError &&
+        <div className="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Error!</strong>
+          <p>{ this.state.error.message}</p>
+          <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      }
       <div className="card-columns">
         {this.state.loading && 
           <div className="loaders">

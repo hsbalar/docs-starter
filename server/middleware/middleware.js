@@ -49,8 +49,6 @@ export function getFileById(req, res) {
     res.set(response.headers);
     return res.send(response.data);
   }).catch(err => {
-    console.log(err);
-    
     return res.status(500).send({error: err.response.data || {}});
   })
 }

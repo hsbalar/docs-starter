@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/services/backend.service';
-import { CONTENTS, FILES, BaseURL } from 'src/reference/api.constant';
+import { CONTENTS, FILES, BaseURL, User, Organization } from 'src/reference/api.constant';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient, HttpEventType, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { AccountContext } from '../../../services/account.context';
@@ -66,7 +66,7 @@ export class ContentsComponent implements OnInit {
   }
 
   getFile(item: any) {
-    let contentHeaders = new HttpHeaders({ 'Authorization': `User ${this.accountContext.User}, Organization ${this.accountContext.Organization}, Element ${this.accountContext.currentElement}`});
+    let contentHeaders = new HttpHeaders({ 'Authorization': `User ${User}, Organization ${Organization}, Element ${this.accountContext.currentElement}`});
     this.http.get(`${BaseURL}${FILES}/${item.id}`, { responseType: 'text', headers: contentHeaders })
       .subscribe(data => {
           const blob = new Blob([data], { type: 'application/octet-stream' });
@@ -106,7 +106,7 @@ export class ContentsComponent implements OnInit {
     let formData = new FormData();
     this.fileUpload.uploading = true;
     Array.from(files).forEach(f => formData.append('file',f))
-    let contentHeaders = new HttpHeaders({ 'Authorization': `User ${this.accountContext.User}, Organization ${this.accountContext.Organization}, Element ${this.accountContext.currentElement}`});
+    let contentHeaders = new HttpHeaders({ 'Authorization': `User ${User}, Organization ${Organization}, Element ${this.accountContext.currentElement}`});
     this.http.post(`${BaseURL}${FILES}?path=${this.activeBreadcrumbItem.path}`, formData, { headers: contentHeaders, reportProgress: true, observe: 'events'})
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
