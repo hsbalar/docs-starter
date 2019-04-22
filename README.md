@@ -50,6 +50,7 @@ export const Organization = `Your Organization key`;
 #### 1. You will only able to see all the instances that you have authenticated for element.
 #### 2. Node API is supports only for documents related elements it can be extended for other types.
 #### 3. OAuth2 login and creation of instance of element can be handled from UI app for any elements.
-#### 4. User have login API for console then no need to specify static User & Organization keys.
-#### 5. To connect other elements API Can be extended
-#### 6. Node API for documents has only required params,for optional can be extended further
+#### 4. User should have login API for console then no need to specify static User & Organization keys.
+#### 5. To connect other elements API Can be extended.
+#### 6. Node API for documents has only required params,for optional can be extended further.
+#### 7. Validations & handling error can be extended.
