@@ -47,3 +47,7 @@ export const User = `Your User key`;
 export const Organization = `Your Organization key`;
 ```
 
+### 1 . Node API is supports only for documents type elements
+### 2 . OAuth2 login and creation of instance of element can be handled from UI app if User have login API for your console.
+### 3 . To connect other elements API Can be extended
+### 4 . Node API for documents has only required params,for optional can be extended further
